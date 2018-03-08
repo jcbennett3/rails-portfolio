@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Portfolios</h1>
-
-
-<%= link_to 'New Blog', new_blog_path %>
+<h1>Portfolio Items</h1>
+<hr>
+<% if @portfolio_items.any? %>
+  <% @portfolio_items.each do |p_item| %>
+    <p><%= p_item.title %></p>
+    <p><%= p_item.subtitle %></p>
+    <p><%= p_item.body %></p>
+    <%= image_tag(p_item.thumb_image) %>
+  <% end %>
+<% end %>
+<br/>
+<%= link_to 'New Portfolio Item', new_portfolio_path %>
