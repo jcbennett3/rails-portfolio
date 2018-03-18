@@ -1,0 +1,14 @@
+<% @portfolio = locals[:portfolio] %>
+<h1>Portfolio Item #<%= locals[:portfolio].id %></h1>
+<em><%= @portfolio.created_at %></em>
+<br/>
+<% if action_name != "show" %>
+  <h2><%= link_to @portfolio.title, @portfolio %></h2>
+<% else %>
+  <h2><%= @portfolio.title %></h2>
+<% end %>
+<p><%= @portfolio.subtitle %></p>
+<div><%= @portfolio.body %></div>
+<%= image_tag(portfolio_img(@portfolio.thumb_image, 'main')) %>
+<%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
+<%= link_to 'Back', portfolios_path %>

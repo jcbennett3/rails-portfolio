@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to "Create New Portfolio Item", new_portfolio_path %>
 <h1>Portfolio Items</h1>
 <hr>
-<% if @portfolio_items.any? %>
-  <% @portfolio_items.each do |p_item| %>
-    <p><%= p_item.title %></p>
-    <p><%= p_item.subtitle %></p>
-    <p><%= p_item.body %></p>
-    <%= image_tag(p_item.thumb_image) %>
+<% if @portfolios.any? %>
+  <% @portfolios.each do |p_item| %>
+    <%= render 'portfolio', locals: {portfolio: p_item} %>
   <% end %>
 <% end %>
+
 <br/>
 <%= link_to 'New Portfolio Item', new_portfolio_path %>
