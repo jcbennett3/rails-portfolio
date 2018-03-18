@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   # GET /blogs
   # GET /blogs.json
@@ -54,11 +54,24 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1
   # DELETE /blogs/1.json
   def destroy
+    @blogs = Blog.all
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js {
+        render :file => "blogs/toggle_status.js.erb"
+      }
     end
+  end
+
+  ## Custom actions
+
+  def toggle_status
+    @blog.draft? ? @blog.published! : @blog.draft!
+    @blogs = Blog.all
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   private
