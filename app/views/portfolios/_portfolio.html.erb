@@ -3,7 +3,7 @@
 <em><%= @portfolio.created_at %></em>
 <br/>
 <% if action_name != "show" %>
-  <h2><%= link_to @portfolio.title, @portfolio %></h2>
+  <h2><%= link_to @portfolio.title, show_portfolio_path(@portfolio.id) %></h2>
 <% else %>
   <h2><%= @portfolio.title %></h2>
 <% end %>
