@@ -11,4 +11,5 @@
 <div><%= @portfolio.body %></div>
 <%= image_tag(portfolio_img(@portfolio.thumb_image, 'main')) %>
 <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
+<%= link_to 'Remove', portfolio_path(@portfolio), method: :delete, data: { disable_with: 'Busy ...'} %>
 <%= link_to 'Back', portfolios_path %>
