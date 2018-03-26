@@ -1,10 +1,12 @@
 class Portfolio < ApplicationRecord
+  has_many :technologies
+
   include Placeholder
 
   validates_presence_of :title, :body, :subtitle
   validates :title, length: { maximum: 60 }
   validates :subtitle, length: { maximum: 60 }
-  validates :body, length: { maximum: 500 }
+  validates :body, length: { maximum: 3000 }
   mount_uploader :thumb_image, PortfolioUploader
   mount_uploader :main_image, PortfolioUploader
 

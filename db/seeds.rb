@@ -34,8 +34,8 @@ puts "5 skills created"
 
 5.times do |portfolio_item|
   Portfolio.create!(
-    title: "Ruby on Rails",
-    subtitle: "Subtitle #{portfolio_item}",
+    title: "Portfolio title: #{portfolio_item}",
+    subtitle: "Ruby on Rails",
     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     thumb_image: "http://via.placeholder.com/350x200",
     main_image: "http://via.placeholder.com/600x400"
@@ -43,18 +43,21 @@ puts "5 skills created"
 end
 5.times do |portfolio_item|
   Portfolio.create!(
-    title: "React on Rails",
-    subtitle: "Subtitle #{portfolio_item}",
+    title: "Portfolio title: #{portfolio_item}",
+    subtitle: "ReactJS",
     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     thumb_image: "http://via.placeholder.com/350x200",
     main_image: "http://via.placeholder.com/600x400"
   )
 end
 
-3.times do |topic|
-  Topic.create!(
-    title: "Topic #{topic}"
+puts "10 portfolio items created"
+
+3.times do |technology|
+  Technology.create!(
+    name: "Technology #{technology}",
+    portfolio_id: Portfolio.last.id
   )
 end
 
-puts "3 Topics created"
+puts "3 Technologies created"
