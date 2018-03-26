@@ -1,4 +1,6 @@
 class Portfolio < ApplicationRecord
+  include Placeholder
+
   validates_presence_of :title, :body, :subtitle
   validates :title, length: { maximum: 60 }
   validates :subtitle, length: { maximum: 60 }
@@ -13,7 +15,9 @@ class Portfolio < ApplicationRecord
 
   private
     def set_defaults
-      self.main_image ||= "http://via.placeholder.com/600x400"
-      self.thumb_image ||= "http://via.placeholder.com/350x200"
+      self.main_image ||= Placholder.image_generator(height: '600', width: '400')
+      self.thumb_image ||= Placeholder.image_generator(height: '300', width: '250')
     end
 end
+
+# Concerns should always be data related.

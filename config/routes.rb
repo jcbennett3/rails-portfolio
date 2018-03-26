@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :skills
+
   resources :portfolios, except: [:show]
   get 'portfolio/:id', to: 'portfolios#show', as: 'show_portfolio'
   get 'home', to: 'pages#home'
